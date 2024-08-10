@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int n = 10;
+    int target, found = 0, b;
+    int arr[n];
+    
+    printf("enter the elements: ");
+    for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+    }
+    
+    printf("your entered numbers: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    
+    printf("which element do you want to check? ");
+    scanf("%d", &b);
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == b) {
+            found = 1;
+            break;
+        }
+    }
+    
+    if (found == 1) {
+        printf("Present\n");
+    } else {
+        printf("Not present\n");
+    }
+
+    return 0;
+}
