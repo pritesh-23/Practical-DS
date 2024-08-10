@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    int n, target, b, index;
+
+    printf("enter the size of array you want ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("enter the elements ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("your entered numbers ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("which index want to delete enter within your size: ");
+    scanf("%d", &index);
+    for (int i = index; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    n--;
+    printf("new array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
