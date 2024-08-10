@@ -1,0 +1,28 @@
+
+#include <stdio.h>
+
+int main() {
+    int n, index,newvalue;
+    printf("enter the size of array you want ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("enter the elements ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf(" entered elemnet ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("which index want to replace ");
+    scanf("%d", &index);
+    printf("enter new value");
+    scanf("%d",&newvalue);
+     arr[index] = newvalue;
+
+    printf(" new array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
