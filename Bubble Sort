@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main(){
+
+    int n;
+    printf("enter the size of array you want ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("enter the elements ");
+    for (int i = 0; i < n; i++){
+        scanf("%d", &arr[i]);
+    }
+    printf("entered elemnet ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+     for (int i = 0; i < n ; i++) {
+        for (int j =0; j < n-i; j++) {
+            if (arr[j] >arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    printf("sorted array: ");
+    for (int i = 0; i < n; i++) {
+      printf("%d ", arr[i]);
+    }
+    return 0;
+}
