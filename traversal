@@ -1,0 +1,34 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+struct node { 
+int data;               
+struct node *next;       
+}; 
+// traversal  
+void traversal(struct node *t) { 
+while (t != NULL) {     
+printf("Element is %d\n", t->data);  
+t = t->next;        
+} 
+} 
+int main() { 
+struct node *p, *q, *r; 
+p = (struct node *) malloc(sizeof(struct node)); 
+q = (struct node *) malloc(sizeof(struct node)); 
+r = (struct node *) malloc(sizeof(struct node)); 
+// value entering  
+printf("enter the value of first node \n"); 
+scanf("%d",&p->data); 
+printf("enter the value of next node \n"); 
+scanf("%d",&q->data); 
+printf("enter the value of next  node \n"); 
+scanf("%d",&r->data);  
+p->next = q; 
+q->next = r;  
+r->next = NULL;  
+traversal(p);    
+free(p); 
+free(q); 
+free(r); 
+return 0;  
+} 
