@@ -1,0 +1,115 @@
+
+#include <stdio.h> 
+#include <stdlib.h> 
+struct node { 
+int data;               
+struct node *next;       
+}; 
+void traversal(struct node *t) { 
+while (t != NULL) {     
+printf("Element is %d\n", t->data);  
+t = t->next;        
+} 
+} 
+ 
+struct node *insert_at_first(struct node *p, int data) { 
+    struct node *ptr = (struct node *)malloc(sizeof(struct 
+node)); 
+    ptr->next = p; 
+    ptr->data = data; 
+    return ptr; 
+} 
+struct node *insert_at_last(struct node *p, int data) { 
+    struct node *new_node = (struct node 
+*)malloc(sizeof(struct node)); 
+    struct node *last = p; 
+     
+    new_node->data = data; 
+    new_node->next = NULL; 
+     
+    if (p == NULL) {  
+        return new_node; 
+    } 
+ 
+    while (last->next != NULL) { 
+        last = last->next; 
+    } 
+     
+    last->next = new_node; 
+    return p; 
+} 
+struct node *insert_at_between(struct node *p, int 
+data, int position) { 
+    struct node *new_node = (struct node 
+*)malloc(sizeof(struct node)); 
+    struct node *current = p; 
+    int i; 
+ 
+    new_node->data = data; 
+ 
+    // If inserting at the beginning (position 0) 
+    if (position == 0) { 
+        new_node->next = p; 
+        return new_node; 
+    } 
+    for (i = 0; i < position - 1 && current != NULL; i++) { 
+        current = current->next; 
+    } 
+ 
+     
+    if (current == NULL) { 
+        printf("Position out of bounds\n"); 
+        free(new_node); 
+        return p; 
+    } 
+ 
+     
+    new_node->next = current->next; 
+    current->next = new_node; 
+     
+    return p; 
+} 
+ 
+int main() { 
+    struct node *p, *q, *r; 
+     
+    p = (struct node *)malloc(sizeof(struct node)); 
+    q = (struct node *)malloc(sizeof(struct node)); 
+    r = (struct node *)malloc(sizeof(struct node)); 
+ 
+     
+    printf("Enter the value of the first node: "); 
+    scanf("%d", &p->data); 
+    printf("Enter the value of the next node: "); 
+    scanf("%d", &q->data); 
+    printf("Enter the value of the next node: "); 
+    scanf("%d", &r->data); 
+    p->next = q; 
+    q->next = r; 
+    r->next = NULL; 
+    traversal(p); 
+    int data; 
+    printf("Enter the data for the new first node: "); 
+    scanf("%d", &data); 
+    p = insert_at_first(p, data); 
+    traversal(p); 
+    printf("Enter the data for the new last node: "); 
+    scanf("%d", &data); 
+    p = insert_at_last(p, data); 
+    traversal(p); 
+ 
+        int position; 
+    printf("Enter the data for the new node: "); 
+    scanf("%d", &data); 
+    printf("Enter the position to insert the new node (0 for first, 1 for second, etc.): "); 
+    scanf("%d", &position); 
+    p = insert_at_between(p, data, position); 
+    traversal(p); 
+    struct node *temp; 
+    while (p != NULL) { 
+temp = p; 
+p = p->next; 
+free(temp); 
+} 
+return 0;  
+} 
