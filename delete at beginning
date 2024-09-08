@@ -1,0 +1,56 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+struct node { 
+int data;               
+    struct node *next;       
+}; 
+void traversal(struct node *t) { 
+    while (t != NULL) {     
+        printf("Element is %d\n", t->data);  
+        t = t->next;        
+    } 
+} 
+struct node *delete_first_element(struct node *head) { 
+    if (head == NULL) { 
+        printf("List is empty. Nothing to delete.\n"); 
+        return NULL; 
+    } 
+ 
+    struct node *temp = head;   
+    head = head->next;        
+    free(temp);   
+    return head;   
+} 
+int main() { 
+    struct node *p, *q, *r; 
+    p = (struct node *)malloc(sizeof(struct node)); 
+    q = (struct node *)malloc(sizeof(struct node)); 
+    r = (struct node *)malloc(sizeof(struct node)); 
+    printf("Enter the value of the first node: "); 
+    scanf("%d", &p->data); 
+    printf("Enter the value of the next node: "); 
+    scanf("%d", &q->data); 
+    printf("Enter the value of the next node: "); 
+    scanf("%d", &r->data); 
+ 
+    p->next = q; 
+    q->next = r; 
+    r->next = NULL; 
+ 
+    printf("Original list:\n"); 
+    traversal(p); 
+ 
+    p = delete_first_element(p); 
+ 
+    printf("List after deleting the first element:\n"); 
+    traversal(p); 
+ 
+    struct node *temp; 
+    while (p != NULL) { 
+        temp = p; 
+        p = p->next; 
+        free(temp); 
+    } 
+ 
+    return 0;  
+}
