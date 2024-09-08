@@ -1,0 +1,54 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+struct node { 
+    int data;               
+    struct node *next;       
+}; 
+ 
+void traversal(struct node *t) { 
+    while (t != NULL) {     
+        printf("Element is %d\n", t->data);  
+        t = t->next;        
+    } 
+} 
+    struct node * insert_at_first(struct  node * p ,int data) 
+    { 
+         struct node * ptr = (struct node*)malloc(sizeof(struct node)); 
+         ptr->next= p; 
+         ptr->data=data; 
+ 
+         return ptr ; 
+ 
+    } 
+  
+int main() { 
+     
+    struct node *p, *q, *r; 
+    p = (struct node *) malloc(sizeof(struct node)); 
+    q = (struct node *) malloc(sizeof(struct node)); 
+    r = (struct node *) malloc(sizeof(struct node)); 
+printf("enter the value of first node \n"); 
+scanf("%d",&p->data); 
+printf("enter the value of next node \n"); 
+scanf("%d",&q->data); 
+printf("enter the value of next  node \n"); 
+scanf("%d",&r->data); 
+ 
+     
+    p->next = q; 
+    q->next = r;  
+    r->next = NULL;  
+ 
+traversal(p); 
+int data ; 
+printf("enter the data for new first node\n"); 
+ 
+scanf("%d",&data); 
+  p = insert_at_first(p,data); 
+  
+  traversal(p); 
+    free(p); 
+    free(q); 
+free(r); 
+return 0;  
+}
